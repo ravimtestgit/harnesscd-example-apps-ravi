@@ -9,12 +9,14 @@ image:
   tag: 0.1
   pullPolicy: IfNotPresent
   
-readinessProbe: null
-
 service:
-  type: ClusterIP
   port: 8080
   targetPort: 8080
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 8080
 
 ingress:
   enabled: false
