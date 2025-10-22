@@ -8,10 +8,16 @@ image:
   repository: gcr.io/heptio-images/ks-guestbook-demo
   tag: 0.1
   pullPolicy: IfNotPresent
-
+  
+readinessProbe:
+  httpGet:
+    path: /
+    port: 8080
+    
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
+  targetPort: 8080
 
 ingress:
   enabled: false
